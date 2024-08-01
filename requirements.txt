@@ -1,0 +1,13 @@
+numpy==1.23.4
+pandas==1.4.2
+requests
+tqdm
+transformers==4.38.2
+psycopg2
+matplotlib
+beautifulsoup4
+yfinance
+scikit-learn
+eventlet
+openpyxl
+tensorflow==2.13.0
