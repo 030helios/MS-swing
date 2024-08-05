@@ -19,11 +19,11 @@ def expiration_cal(x):
     settlement = pd.read_csv(ROOT+"txf_settlement.csv")
     settlement['txf_settlement'] = pd.to_datetime(settlement['txf_settlement'])
     settlement = settlement.set_index(settlement['txf_settlement'])
-    remain = (settlement[x.strftime('%Y/%m')].index - x)[0]
+    remain = (settlement[x.strftime('%Y-%m')].index - x)[0]
     if remain >= pd.Timedelta("0 days"):
         return remain
     else:
-        return (settlement[(x + pd.Timedelta(15, unit="d")).strftime('%Y/%m')].index - x)[0]
+        return (settlement[(x + pd.Timedelta(15, unit="d")).strftime('%Y-%m')].index - x)[0]
 
 
 def settlement_cal(d):

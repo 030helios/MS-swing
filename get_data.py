@@ -1,4 +1,5 @@
 from import_tool import *
+from crawler_fut import get_price
 import config
 
 ROOT = './import_csv/'
@@ -11,20 +12,6 @@ conn = psycopg2.connect(user=config.server['user'],
                         port=config.server['port'],
                         database=config.server['database'])
 cur = conn.cursor()
-
-def get_price(start_date,end_date,target):
-    start_date:str = start_date
-    end_date:str = end_date
-    target:str = target
-    sql = '''SELECT DISTINCT ON(date)date, open, high, low, last AS close, vr AS volume FROM api_taifex_futures_price 
-    WHERE contract='{target}' AND session='regular' and date >= '{start_date}' and date <= '{end_date}' 
-    ORDER BY date ASC, contract_month ASC'''.format(target=target,start_date=start_date,end_date =end_date)
-
-    cur.execute(sql)
-    df_TWF_price = pd.DataFrame(cur.fetchall(),columns = [col[0] for col in cur.description])
-    # df_TWF_price = pd.read_sql(sql, conn)
-    df_TWF_price.to_csv(ROOT+"TWF_price.csv",index = 0)
-    return df_TWF_price
 
 def get_taiex(start_date,end_date):
     start_date:str = start_date
@@ -181,7 +168,7 @@ get_usa_data()
 #%%
 # +
 print("download TWF price")
-df_TWF_price = get_price(start_date,end_date,'TX')
+df_TWF_price = get_price(start_date,end_date)
 print("download TAIEX")
 df_taiex = get_taiex(start_date,end_date)
 

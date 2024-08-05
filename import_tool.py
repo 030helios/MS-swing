@@ -45,14 +45,14 @@ NORMAL_COL = ["open", "close", "low", "high", "volume"]
 
 # SET TIME
 start_date = "2007-07-10"
-end_date = "2024-07-31"
+end_date = "2024-08-01"
 
 # SET GPU
 os.environ["TF_XLA_FLAGS"] = "--tf_xla_enable_xla_devices"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 class CFG:
-    inference = False
+    inference = True
     futureDay = 1
     output_dir = 'checkpoints'
     pretrained = True                    # 是否加载预训练模型权重, False为仅加载模型结构随机初始化权重

@@ -28,8 +28,8 @@ def get_parsing_data(url_s):
 # 手動看一下該年總共有幾頁的新聞資料
 # 再把總共頁數填進 line 35
 output = []
-for i in range(229):
-    url = "https://udndata.com/ndapp/Searchdec?udndbid=udnfree&page={}&SearchString=%A5%78%AA%D1%2B%A4%E9%B4%C1%26gt%3B%3D20240101%2B%A4%E9%B4%C1%26lt%3B%3D20240612%2B%B3%F8%A7%4F%3D%C1%70%A6%58%B3%F8%7C%B8%67%C0%D9%A4%E9%B3%F8%7C%C1%70%A6%58%B1%DF%B3%F8%7CUpaper&sharepage=20&select=1&kind=2".format(
+for i in range(230):
+    url = "https://udndata.com/ndapp/Searchdec?udndbid=udnfree&page={}&SearchString=%A5%78%AA%D1%2B%A4%E9%B4%C1%26gt%3B%3D20240101%2B%A4%E9%B4%C1%26lt%3B%3D20240801%2B%B3%F8%A7%4F%3D%C1%70%A6%58%B3%F8%7C%B8%67%C0%D9%A4%E9%B3%F8%7C%C1%70%A6%58%B1%DF%B3%F8%7CUpaper&sharepage=20&select=1&kind=2".format(
         i + 1
     )
     result = get_parsing_data(url)
