@@ -44,15 +44,16 @@ PIC = "./pic/"
 NORMAL_COL = ["open", "close", "low", "high", "volume"]
 
 # SET TIME
-start_date = "2007-07-10"
-end_date = "2024-08-01"
+start_date = "2015-01-01"
+yesterday = datetime.date.today() - datetime.timedelta(days=1)
+end_date = yesterday.strftime("%Y-%m-%d")
 
 # SET GPU
 os.environ["TF_XLA_FLAGS"] = "--tf_xla_enable_xla_devices"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 class CFG:
-    inference = True
+    inference = False
     futureDay = 1
     output_dir = 'checkpoints'
     pretrained = True                    # 是否加载预训练模型权重, False为仅加载模型结构随机初始化权重

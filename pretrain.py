@@ -5,6 +5,7 @@ import pickle
 from torch.utils.data import DataLoader, Dataset
 from finmodel import SimpleCLIP, ModalitySpecific
 from import_tool import CFG
+import import_tool
 
 from pprint import pprint
 from tqdm import tqdm
@@ -173,6 +174,8 @@ if __name__ == '__main__':
     merge_data = pd.merge(stock_data, news_en_data)
     merge_data = pd.merge(merge_data, news_data, on=['date'])
     merge_data = merge_data.drop(["summary_x", "summary_y"], axis=1)
+
+    merge_data = merge_data[merge_data["date"] < import_tool.end_date]
 
     train_data = merge_data[merge_data["date"] < SPLIT_DATE].drop(["date"], axis=1).astype('float32')
     valid_data = merge_data[merge_data["date"] >= SPLIT_DATE].drop(["date"], axis=1).astype('float32')

@@ -1,0 +1,9 @@
+cd C:\MS-swing
+call .\ms-swing\Scripts\activate.bat
+python .\get_data.py
+python .\get_news_data_ch.py
+python .\get_news_data_en.py
+python .\data_pre.py
+python .\news_data_pre.py
+python .\pretrain.py
+python .\finetune.py

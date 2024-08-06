@@ -5,6 +5,7 @@ import pickle
 from torch.utils.data import DataLoader, Dataset
 from finmodel import SimpleCLIP, FinClip
 from import_tool import CFG
+import import_tool
 
 from pprint import pprint
 from tqdm import tqdm
@@ -196,6 +197,8 @@ if __name__ == '__main__':
     with open('merge_data.pickle', 'wb') as handle:
         pickle.dump(merge_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
     '''
+
+    merge_data = merge_data[merge_data["date"] < import_tool.end_date]
 
     train_data = merge_data[merge_data["date"] < SPLIT_DATE]
     valid_data = merge_data[merge_data["date"] >= SPLIT_DATE]

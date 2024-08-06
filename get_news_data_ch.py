@@ -27,9 +27,22 @@ def get_parsing_data(url_s):
 # 搜尋到的"第一頁URL 複製到line 36"，把中間的page=1改為 page={}
 # 手動看一下該年總共有幾頁的新聞資料
 # 再把總共頁數填進 line 35
+
+with open('latestURL.txt') as f:
+    latestURL = [line.rstrip() for line in f]
+    latestURL = latestURL[0]
+    splittedURL = latestURL.split('&')
+    page = splittedURL[1][5:]
+    page = int(page)
+
+    splittedURL[1] = "page={}"
+
+    unformatURL = '&'.join(splittedURL)
+    unformatURL = 'https://'+unformatURL
+    
 output = []
-for i in range(230):
-    url = "https://udndata.com/ndapp/Searchdec?udndbid=udnfree&page={}&SearchString=%A5%78%AA%D1%2B%A4%E9%B4%C1%26gt%3B%3D20240101%2B%A4%E9%B4%C1%26lt%3B%3D20240801%2B%B3%F8%A7%4F%3D%C1%70%A6%58%B3%F8%7C%B8%67%C0%D9%A4%E9%B3%F8%7C%C1%70%A6%58%B1%DF%B3%F8%7CUpaper&sharepage=20&select=1&kind=2".format(
+for i in range(page):
+    url = unformatURL.format(
         i + 1
     )
     result = get_parsing_data(url)
