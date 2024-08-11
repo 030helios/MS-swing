@@ -2,7 +2,7 @@
   "name": "autoupdater",
   "projectId": "981dd594-03a4-49b8-8095-60c91a7639cc",
   "description": "Blank Process",
-  "main": "autoupdate chinese news.xaml",
+  "main": "autoupdate.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.23.4]",
     "UiPath.Mail.Activities": "[1.23.1]",

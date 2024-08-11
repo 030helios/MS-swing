@@ -1,5 +1,8 @@
 # MS-swing
 
+## requirements
+pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements
 
 python .\get_data.py; python .\get_news_data_ch.py; python .\get_news_data_en.py; python .\data_pre.py; python .\news_data_pre.py;
 python .\pretrain.py;python .\finetune.py
